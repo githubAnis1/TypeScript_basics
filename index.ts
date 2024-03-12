@@ -1,3 +1,9 @@
+                        // >> tsc  <---- to make transpilation in index.js
+                        // >> node index.js  <------ run the code
+
+
+
+
  /*_____________________1 Statically vs Dynamically Typed Languages ____________________*/
 
  /* 
