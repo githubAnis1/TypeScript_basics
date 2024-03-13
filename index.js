@@ -186,14 +186,9 @@ console.log(myObeject.skills.one);
 let user = {
     id: 100,
     username: "Elzero",
-    country: "Egypt"
+    country: "Egypt",
+    role: "Mod",
+    protect: true
 };
-user.country = "Syria";
-console.log(user);
-function getData(data) {
-    console.log(`Id Is ${data.id}`);
-    console.log(`Username Is ${data.username}`);
-    console.log(`Country Is ${data.country}`);
-}
-getData({ id: 3, username: "Osama", country: "KSA" });
-/*_____________________End   Interface Declaration ____________________*/ 
+console.log(user.id);
+/*_____________________End Interface Extend ____________________*/ 
