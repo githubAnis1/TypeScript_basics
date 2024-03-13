@@ -438,7 +438,7 @@ interface User {
 /*
   Interface
   - Interface Method And Parameters
-*/
+
 
 interface User {
     id: number;
@@ -468,4 +468,69 @@ interface User {
   console.log(user.sayHello());
   console.log(user.sayWelcome());
   console.log(user.getDouble(100));
+  */
 /*_____________________End Interface Method And Parameters____________________*/
+
+/*_____________________16 Interface Reopen And Use Cases____________________*/
+/*
+  Interface
+  - ReOpen The Interface And Use Cases
+
+
+// Homepage
+interface Settings {
+    readonly theme: boolean;
+    font: string;
+  }
+  
+  // Articles Page
+  interface Settings {
+    sidebar: boolean;
+  }
+  
+  // Contact Page
+  interface Settings {
+    external: boolean;
+  }
+  
+  let userSettings: Settings = {
+    theme: true,
+    font: "Open Sans",
+    sidebar: false,
+    external: true
+  }
+*/
+
+/*_____________________End Interface Reopen And Use Cases____________________*/
+
+
+/*_____________________17 Interface Extend ____________________*/
+/*
+  Interface
+  - Extending Interfaces
+*/
+
+interface User {
+    id: number;
+    username: string;
+    country: string;
+  }
+  
+  interface Moderator {
+    role: string | number;
+  }
+  
+  interface Admin extends User,Moderator {
+    protect?: boolean;
+  }
+  
+  let user: Admin = {
+    id: 100,
+    username: "Elzero",
+    country: "Egypt",
+    role: "Mod",
+    protect: true
+  }
+  
+  console.log(user.id);
+  /*_____________________End Interface Extend ____________________*/
