@@ -1,4 +1,6 @@
 "use strict";
+// >> tsc  <---- to make transpilation in index.js
+// >> node index.js  <------ run the code
 /*_____________________1 Statically vs Dynamically Typed Languages ____________________*/
 /*
 Statically Typed Language Like [Rust, C, C++]
@@ -42,112 +44,13 @@ for (let i = 0; i < myFriends.length; i++) {
 /*_____________________End Type Annotations With Arrays ____________________*/
 /*_____________________4 Type Annotations With Multidimensional Arrays ____________________*/
 let arrayOne = ["A", 2, ["C", "D"], true, false, [false, true]];
-/*_____________________End Type Annotations With Multidimensional Arrays ____________________*/
-/*_____________________5  Type Annotations With Function ____________________*/
-/*
-  Type Annotations With Functions
-
-  - noImplicitAny
-
-  - noImplicitReturns
-  --- Will Check All Code Paths In A Function To Ensure They Return A Value
-
-  - noUnusedLocals
-  --- Report Errors On Unused Local Variables
-
-  - noUnusedParameters
-  --- Report Errors On Unused Parameters In Functions.
-
-
-let showMsg = true;
-
-function showDetails(name: string, age: number, salary: number): string  {
-  let test = 10;
-  if (showMsg) {
-    return `Hello ${name}, Age Is ${age}, Salary Is ${"s"},`;
-  }
-  return `No Data To Show`;
-}
-
-console.log(showDetails("Osama", 40, 5000));
-*/
-/*_____________________End  Type Annotations With Function ____________________*/
-/*_____________________6  Function Optional and Default Parameters ____________________*/
-/*
-  Function
-  - Optional and Default Parameters
-
-  - In JavaScript, Every Parameter Is Optional => "undefined" If You didn't Use It
-  - "?" Optional Parameter
-  - op param must oredered before required param in a func
-
-
-function showData(name?: string, age?: number, country?: string) {
-    return `${name} - ${age} - ${country}`;
-  }
-  
-  console.log(showData("Osama", 40, "Egypt"));
-  
-*/
-/*_____________________End  Function Optional and Default Parameters ____________________*/
-/*_____________________7  Function Rest Parameter____________________*/
-/* const summation = (...nums: number[]): number => {
-    let result = 0;
-    for (let i = 0; i < nums.length; i++) {
-        result += nums[i]
-    }
-    nums.map((num)=> result += num)
-
-    return result
-}
-console.log(summation(10,20,30,40,+true));
-
-1.>> tsc //compile the file
-2.>> node /index.js */
-/*_____________________End  Function Rest Parameter____________________*/
-/*_____________________8  Data Types - Type Alias____________________*/
-/*
-  Data Types
-  - Type Alias
-
-
-type st = string;
-let theName: st = "Elzero";
-theName = "Osama";
-
-type standnum = string | number;
-let all: standnum = 10;
-all = 100;
-all = "Osama";
-
-*/
-/*_____________________End   Data Types - Type Alias____________________*/
-/*_____________________9  Data Types - Type Alias Advanced____________________*/
-/*
-  Data Types
-  - Advanced Type Alias
-
-
-type Buttons = {
-    up: string,
-    right: string,
-    down: string,
-    left: string
-  }
-  
-  type Last = Buttons & {
-    x: boolean
-  }
-  
-  function getActions(btns: Last) {
+function getActions(btns) {
     console.log(`Action For Button Up Is ${btns.up}`);
     console.log(`Action For Button Right Is ${btns.right}`);
     console.log(`Action For Button Down Is ${btns.down}`);
     console.log(`Action For Button Left Is ${btns.left}`);
-  }
-  
-  getActions({ up: "Jump", right: "Go Right", down: "Go Down", left: "Go Left", x: true });
-*/
+}
+getActions({ up: "Jump", right: "Go Right", down: "Go Down", left: "Go Left", x: true });
 /*_____________________End   Data Types - Type Alias Advanced____________________*/
 /*_____________________10  Data Types - Literal Types____________________*/
 /*
@@ -191,4 +94,106 @@ const [id, title, published] = article;
 console.log(id);
 console.log(title);
 console.log(published);
-/*_____________________End   Data Types - Tuple____________________*/ 
+/*_____________________End   Data Types - Tuple____________________*/
+/*_____________________12 Data Types - Enums Part 1____________________*/
+/*
+  Data Types
+  - Enums => Enumerations
+  --- Allow Us To Declare A Set Of Named Constants
+  --- "Collection Of Related Values"
+  --- It Organize Your Code
+  --- By Default Enums Are Number-Based, First Element Is 0
+  --- Theres A Numeric Enums
+  --- Theres A String-Based Enums
+  --- Theres Heterogeneous Enums [String + Number]
+
+
+const KIDS = 15;
+const EASY = 9;
+const MEDIUM = 6;
+const HARD = 3;
+
+enum Level {
+  Kids = 15,
+  Easy = 9,
+  Medium = 6,
+  Hard = 3
+}
+
+let lvl: string = "Easy";
+
+if (lvl === "Easy") {
+  console.log(`The Level Is ${lvl} And Number Of Seconds Is ${Level.Easy}`);
+}
+*/
+/*_____________________End  Data Types - Enums Part 1____________________*/
+/*_____________________11  Data Types - Enums Part 2____________________*/
+/*
+  Data Types
+  - Enums => Enumerations
+  --- Enum Can Refer To Other Enum
+  --- Enum Can Refer To Same Enum
+  --- Enum Can Have Calculations
+  --- Enum Can Have Functions
+*/
+function getHardSeconds() {
+    return 3;
+}
+var Kids;
+(function (Kids) {
+    Kids[Kids["Five"] = 25] = "Five";
+    Kids[Kids["Seven"] = 20] = "Seven";
+    Kids[Kids["Ten"] = 15] = "Ten";
+})(Kids || (Kids = {}));
+var Level;
+(function (Level) {
+    Level[Level["Kid"] = 15] = "Kid";
+    Level[Level["Easy"] = 9] = "Easy";
+    Level[Level["Medium"] = 6] = "Medium";
+    Level[Level["Hard"] = getHardSeconds()] = "Hard";
+})(Level || (Level = {}));
+let lvl = "Easy";
+if (lvl === "Easy") {
+    console.log(`The Level Is ${lvl} And Number Of Seconds Is ${Level.Hard}`);
+}
+function getActionsTwo(btns) {
+    console.log(`Hello ${btns.one}`);
+    console.log(`Hello ${btns.two}`);
+    console.log(`Hello ${btns.three}`);
+    console.log(`Hello ${btns.five}`);
+}
+getActionsTwo({ one: "String", two: 100, three: true, five: true });
+/*_____________________End  Union And Intersection Types ____________________*/
+/*_____________________14  Type Annotations With Object ____________________*/
+let myObeject = {
+    id: 1,
+    userName: "anis",
+    skills: {
+        one: "React",
+        two: "Next JS",
+    }
+};
+/* update the object */
+myObeject.id = 2;
+myObeject.hire = false;
+myObeject.skills.one = "TypeScript";
+/* Display data */
+console.log("Type Annotations With Object____________");
+console.log(myObeject.id);
+console.log(myObeject.userName);
+console.log(myObeject.hire);
+console.log(myObeject.skills.one);
+let user = {
+    id: 100,
+    username: "Elzero",
+    country: "Egypt"
+};
+user.country = "Syria";
+console.log(user);
+function getData(data) {
+    console.log(`Id Is ${data.id}`);
+    console.log(`Username Is ${data.username}`);
+    console.log(`Country Is ${data.country}`);
+}
+getData({ id: 3, username: "Osama", country: "KSA" });
+/*_____________________End   Interface Declaration ____________________*/ 

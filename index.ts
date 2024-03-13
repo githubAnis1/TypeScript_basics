@@ -151,6 +151,7 @@ all = "Osama";
 /*
   Data Types
   - Advanced Type Alias
+  */
 
 
 type Buttons = {
@@ -172,7 +173,7 @@ type Buttons = {
   }
   
   getActions({ up: "Jump", right: "Go Right", down: "Go Down", left: "Go Left", x: true });
-*/
+
 
 /*_____________________End   Data Types - Type Alias Advanced____________________*/
 
@@ -295,3 +296,176 @@ function getHardSeconds() : number {
     console.log(`The Level Is ${lvl} And Number Of Seconds Is ${Level.Hard}`);
   }
 /*_____________________End   Data Types - Enums Part 2____________________*/
+
+/*_____________________12  Data Types - Type Assertions____________________*/
+/*
+  Data Types
+  - Type Assertions
+  --- Sometime Compiler Doesnt Know The Information We Do
+  --- TypeScript Is Not Performing Any Check To Make Sure Type Assertion Is Valid
+*/
+
+/* let myImg = document.getElementById("my-img") as HTMLImageElement;
+let myImg = <HTMLImageElement> document.getElementById("my-img");
+console.log(myImg.src);
+
+let data: any = 1000;
+console.log((data as string).repeat(3)); */
+
+/*_____________________End  Data Types - Type Assertions____________________*/
+
+/*_____________________13  Union And Intersection Types ____________________*/
+/*
+  Data Types
+  - Union And Intersection Types
+  --- Union Type
+  ------ The | Symbol Is Used To Create The Union => "Or"
+
+  --- Intersection Type
+  ------ Is A Type That Combines Several Types Into One
+  ------ The & Symbol Is Used To Create An Intersection => "And"
+
+  --- If A Union Is An OR, Then An Intersection Is An AND.
+*/
+
+// let all: number | string = 100;
+
+type A = {
+    one: string,
+    two: number,
+    three: boolean
+  }
+  
+  type B = A & {
+    four: number
+  }
+  
+  type C = {
+    five: boolean
+  }
+  
+  type mix = A & C;
+  
+  function getActionsTwo(btns: mix) {
+    console.log(`Hello ${btns.one}`);
+    console.log(`Hello ${btns.two}`);
+    console.log(`Hello ${btns.three}`);
+    console.log(`Hello ${btns.five}`);
+  }
+  
+  getActionsTwo({ one: "String", two: 100, three: true, five: true });
+
+/*_____________________End  Union And Intersection Types ____________________*/
+
+/*_____________________14  Type Annotations With Object ____________________*/
+
+let myObeject : {
+    id: number,
+    readonly userName: string,
+    hire?: boolean,
+    skills: {
+        one:string;
+        two:string;
+    }
+} = {
+    id: 1,
+    userName: "anis",
+    skills: {
+        one: "React",
+        two: "Next JS",
+    }
+} 
+/* update the object */
+myObeject.id = 2;
+myObeject.hire = false;
+myObeject.skills.one = "TypeScript";
+
+/* Display data */
+
+console.log("Type Annotations With Object____________");
+console.log(myObeject.id )
+console.log(myObeject.userName )
+console.log(myObeject.hire )
+console.log(myObeject.skills.one )
+
+/*_____________________End  Type Annotations With Object ____________________*/
+
+
+/*_____________________15   Interface Declaration ____________________*/
+
+/*
+  Interface
+  - Interface Declaration
+  --- Serve Like Types
+  --- The Interface Describes The Shape Of An Object
+  --- It Defines The Syntax To Follow
+
+  --- Use With Object
+  --- Use With Function
+  --- Use Read Only And Optional Operator
+
+
+interface User {
+    id?: number,
+    readonly username: string,
+    country: string
+  }
+  
+  let user: User = {
+    id: 100,
+    username: "Elzero",
+    country: "Egypt"
+  }
+  
+  user.country = "Syria";
+  
+  console.log(user);
+  
+  function getData(data: User) {
+    console.log(`Id Is ${data.id}`);
+    console.log(`Username Is ${data.username}`);
+    console.log(`Country Is ${data.country}`);
+  }
+  
+  getData({id:3 , username: "Osama", country: "KSA" });
+  */
+
+/*_____________________End   Interface Declaration ____________________*/
+
+
+/*_____________________15 Interface Method And Parameters____________________*/
+
+/*
+  Interface
+  - Interface Method And Parameters
+*/
+
+interface User {
+    id: number;
+    username: string;
+    country: string;
+    sayHello() : string;
+    sayWelcome: () => string;
+    getDouble(num: number) : number;
+  }
+  
+  let user: User = {
+    id: 100,
+    username: "Elzero",
+    country: "Egypt",
+    sayHello() {
+      return `Hello ${this.username}`;
+    },
+    sayWelcome: () => {
+      return `Welcome ${user.username}`;
+    },
+    getDouble(n) {
+      return n * 2;
+    }
+  }
+  
+  console.log(user.id);
+  console.log(user.sayHello());
+  console.log(user.sayWelcome());
+  console.log(user.getDouble(100));
+/*_____________________End Interface Method And Parameters____________________*/
