@@ -508,7 +508,7 @@ interface Settings {
 /*
   Interface
   - Extending Interfaces
-*/
+
 
 interface User {
     id: number;
@@ -531,6 +531,44 @@ interface User {
     role: "Mod",
     protect: true
   }
+
   
   console.log(user.id);
+  */
   /*_____________________End Interface Extend ____________________*/
+
+  /*_____________________18 Class Type Annotations ____________________*/
+  /*
+  Type Annotations With Class
+*/
+
+class User {
+  u: string;
+  s: number;
+  msg: () => string;
+  constructor(username: string, salary: number) {
+    this.u = username;
+    this.s = salary;
+    this.msg = function () {
+      return `Hello ${this.u} Your Salary Is ${this.s}`;
+    }
+  }
+  sayMsg() {
+    return `Hello ${this.u} Your Salary Is ${this.s}`;
+  }
+}
+
+let userOne = new User("Elzero", 6000);
+
+console.log(userOne.u);
+console.log(userOne.s);
+console.log(userOne.msg());
+console.log(userOne.sayMsg());
+
+  /*_____________________End Class Type Annotations ____________________*/
+
+  /*_____________________18  Class Access Modifiers And Parameters Properties ____________________*/
+
+  
+
+  /*_____________________End  Class Access Modifiers And Parameters Properties ____________________*/
