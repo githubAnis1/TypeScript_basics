@@ -649,3 +649,83 @@ console.log(userOne.msg());
 console.log(userOne.sayMsg());
 
 /*_____________________End  Class Accessors ____________________*/
+/*_____________________20  Class Static Members ____________________*/
+/*_____________________21  Class Implement Interface ____________________*/
+/*_____________________22  Abstract Classes And Members ____________________*/
+/*_____________________23  Polymorphism & Method Override ____________________*/
+
+/*_____________________24  Generics Introduction ____________________*/
+
+/*
+  Generics
+  - Help Write A Reusable Code
+  - Allow To Pass Type As A Parameter To Another Type
+  - You Will Be Able To Deal With Multiple Types Without Using ": Any Type"
+  - We Can Create:
+  --- Generic Classes
+  --- Generic Functions
+  --- Generic Methods
+  --- Generic Interfaces
+
+
+function returnNumber(val: number) : number {
+  return val;
+}
+function returnString(val: string) : string {
+  return val;
+}
+function returnBoolean(val: boolean) : boolean {
+  return val;
+}
+
+console.log(returnNumber(100));
+console.log(returnString("Elzero"));
+console.log(returnBoolean(true));
+
+function returnType<T>(val: T) : T {
+  return val;
+}
+
+console.log(returnType<number>(100));
+console.log(returnType<string>("Elzero"));
+console.log(returnType<boolean>(true));
+console.log(returnType<number[]>([1, 2, 3, 4]));
+
+*/
+/*_____________________End  Generics Introduction ____________________*/
+
+/*_____________________25  Generics Multiple Types ____________________*/
+/*
+  Generics
+  - Arrow Function
+  - Multiple Types
+  - Discussion
+*/
+
+function returnType<T>(val: T): T {
+  return val;
+}
+
+console.log(returnType<number>(100));
+console.log(returnType<string>("Elzero"));
+
+const returnTypeArrowSyntax = <T>(val: T): T => val;
+
+console.log(returnTypeArrowSyntax<number>(100));
+console.log(returnTypeArrowSyntax<string>("Elzero"));
+
+function testType<T>(val: T): string {
+  return `The Value Is ${val} And Type Is ${typeof val}`;
+}
+
+console.log(testType<number>(100));
+console.log(testType<string>("Elzero"));
+
+function multipleTypes<T, S>(valueOne: T, valueTwo: S): string {
+  return `The First Value Is ${valueOne} And Second Value ${valueTwo}`;
+}
+
+console.log(multipleTypes<string, number>("Osama", 100));
+console.log(multipleTypes<string, boolean>("Elzero", true));
+
+/*_____________________End  Generics Multiple Types ____________________*/
