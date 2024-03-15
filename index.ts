@@ -701,31 +701,49 @@ console.log(returnType<number[]>([1, 2, 3, 4]));
   - Multiple Types
   - Discussion
 */
-
-function returnType<T>(val: T): T {
-  return val;
+const mutipleType = <T,S> (valueOne: T, valueTwo: S): string => {
+  return `The 1st value is ${valueOne} of type ${ typeof valueOne}          
+The 1st value is ${valueTwo} of type ${ typeof valueTwo}`;
 }
 
-console.log(returnType<number>(100));
-console.log(returnType<string>("Elzero"));
-
-const returnTypeArrowSyntax = <T>(val: T): T => val;
-
-console.log(returnTypeArrowSyntax<number>(100));
-console.log(returnTypeArrowSyntax<string>("Elzero"));
-
-function testType<T>(val: T): string {
-  return `The Value Is ${val} And Type Is ${typeof val}`;
-}
-
-console.log(testType<number>(100));
-console.log(testType<string>("Elzero"));
-
-function multipleTypes<T, S>(valueOne: T, valueTwo: S): string {
-  return `The First Value Is ${valueOne} And Second Value ${valueTwo}`;
-}
-
-console.log(multipleTypes<string, number>("Osama", 100));
-console.log(multipleTypes<string, boolean>("Elzero", true));
+console.log(mutipleType<string, number>("Anis",100));
+console.log(mutipleType<string, boolean>("alaa",true));
 
 /*_____________________End  Generics Multiple Types ____________________*/
+
+/*_____________________26   Generics Classes ____________________*/
+/*_____________________27   Generics And Interfaces ____________________*/
+/*
+  Generics
+  - Classes And Interfaces
+*/
+
+interface Book {
+  itemType: string;
+  title: string;
+  isbn: number;
+}
+
+interface Game {
+  itemType: string;
+  title: string;
+  style: string;
+  price: number;
+}
+
+class Collection<T> {
+  public data: T[] = [];
+  add(item: T) : void {
+    this.data.push(item);
+  }
+}
+
+let itemOne = new Collection<Book>();
+itemOne.add({ itemType: "Book", title: "Atomic Habits", isbn: 150510 });
+itemOne.add({ itemType: "Book", title: "Follow Your Heart", isbn: 650650 });
+console.log(itemOne);
+
+let itemTwo = new Collection<Game>();
+itemTwo.add({ itemType: "Game", title: "Uncharted", style: "Action", price: 150 });
+console.log(itemTwo);
+/*_____________________End Generics And Interfaces ____________________*/
